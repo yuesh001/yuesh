@@ -1,0 +1,192 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,minimum-scale=0,maximum-scale=0.4,user-scalable=no" />
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript" src="qrcode.js"></script>
+    <title>学生外出请假</title>
+    <style>
+		.mui-ios header{
+		
+		padding-top: 8px !important;
+		}
+		
+		.mui-android header{
+		
+		padding-top: 10px !important;
+		
+		}
+		
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body,html{
+            width: 100%;
+            height: 100%;
+        }
+        .main{
+            width: 100%;
+            height: 100%;
+            background: #E1ECFE;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .top_box{
+            width: calc(100% - 84px);
+            height: 444px;
+            margin: 0 auto;
+            margin-top: 45px;
+            background: #1EB3B1;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0px 50px 40px -20px #C6DFDF;
+            z-index: 20!important;
+            position: relative;
+        }
+        .top_box img{
+            float:right;
+            margin-top: 32px;
+            margin-right: 44px;
+        }
+        .top_box div{
+            float: left;
+            color: #fff!important;
+            margin-top: 40px;
+            margin-left: 58px;
+        }
+        .bg_bos{
+            width: calc(100% - 192px);
+            /*height: 900px;*/
+            background: #fff;
+            margin: 0 auto;
+            margin-top: -20px;
+            overflow: hidden;
+            position: relative;
+            text-align:center;
+        }
+        .bg_bos div{
+            margin: 0 auto;
+            margin-top: 50px;
+            margin-bottom: 44px;
+            text-align:center;
+            position: relative;
+            overflow: hidden;
+        }
+        .second{
+            font-family: "Raleway", sans-serif;
+            font-size: 140px;
+            font-weigh:1000;
+            color: rgb(252,42,51);
+            text-shadow: rgb(128,40,36) 10px 10px 10px;
+            -webkit-text-stroke: 4px rgb(255,250,23);
+            z-index: 10;
+            position: relative;
+            /*position: absolute;*/
+            /*top: 50%;*/
+            /*left: 50%;*/
+            margin-top: 250px;
+            /*margin-left: -180px;*/
+        }  
+    </style>
+</head>
+<body rlt="1">
+	
+    <main class="main">
+        <div class="top_box">
+            <div>
+                <p style="font-size: 50px"><strong>刘靖</strong></p>
+                <p style="font-size: 34px;margin-top: 34px;">学号 : 20200060201066</p>
+                <p style="font-size: 34px;margin-top: 24px;">班级 : 教育学2001</p>
+                <p style="font-size: 34px;margin-top: 24px;">开始 : <span><span id="time5">2020-11-27</span> 07:00</span></p>
+                <p style="font-size: 34px;margin-top: 24px;">结束 : <span><span id="time6">2020-11-27</span> 23:00</span></p>
+            </div>
+            <img src="img/1.jpg" height="380" width="295">
+        </div>
+        <div class="bg_bos">
+            <div style="width: 700px;height: 700px">
+                <div style="position: absolute;left: 25px;" id="qrcode"></div>
+                <h1 class="second"><span id="second">180</span>S</h1>
+            </div>
+            <h4 style="font-size: 46px;font-weigh:900;margin-bottom: 90px"><span id="now_time1">2020-11-27</span> <span style="color: red" id="now_time2">11:40:10</span></h4>
+
+        </div>
+        <p style="margin-top: 38px;text-align:center;font-size: 30px;color: #767877">请尽快向保安人员出示当前页面，倒计时结束后页面将失效</p>
+    </main>
+
+
+<script type="text/javascript">
+var qrcode = new QRCode(document.getElementById("qrcode"), {
+	width : 650,
+	height : 650,
+	colorDark:"green",
+	colorLight:"white",
+});
+
+function makeCode () {	
+	var elText = document.getElementById("text");
+	htmlobj=$.ajax({url:"http://noleave.sxu.edu.cn/jcforms/plus/api/getRandom", type: 'POST', async:false});
+	var data=JSON.parse(htmlobj.responseText);
+	var text = data.msg;
+	qrcode.makeCode(text);
+}
+
+makeCode();
+
+$("#text").
+	on("blur", function () {
+		makeCode();
+	}).
+	on("keydown", function (e) {
+		if (e.keyCode == 13) {
+			makeCode();
+		}
+	});
+</script>
+
+
+<script src="//hm.baidu.com/hm.js?1cf880de4bc3c11500482f152b3353c0"></script><script>
+    window.onload = function () {
+        Date.prototype.Format = function (fmt) { // author: meizz
+            var o = {
+                "M+": this.getMonth() + 1, // 月份
+                "d+": this.getDate(), // 日
+                "h+": this.getHours(), // 小时
+                "m+": this.getMinutes(), // 分
+                "s+": this.getSeconds(), // 秒
+                "q+": Math.floor((this.getMonth() + 3) / 3), // 季度
+                "S": this.getMilliseconds() // 毫秒
+            };
+            if (/(y+)/.test(fmt))
+                fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+            for (var k in o)
+                if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+            return fmt;
+        }
+        var now_time1 = document.getElementById('now_time1');
+        var now_time2 = document.getElementById('now_time2');
+        var time5 = document.getElementById('time5');
+        var time6 = document.getElementById('time6');
+        var _second = document.getElementById('second');
+        now_time1.innerText = new Date().Format("yyyy-MM-dd");
+        time5.innerText = new Date().Format("yyyy-MM-dd");
+        time6.innerText = new Date().Format("yyyy-MM-dd");
+        var objTime = new Date();
+        var seconds = 180;
+        function setTime() {
+            seconds -= 1;
+            if (seconds <= 0) {
+                seconds = 180
+            }
+            _second.innerText = seconds;
+            var year = objTime.getFullYear();                   //年
+            var month = objTime.getMonth();                   //月
+            var day = objTime.getDate();                         //日期
+            var hour = objTime.getHours() < 10 ? '0' + objTime.getHours() : objTime.getHours();                                      //时
+            var minute = objTime.getMinutes() < 10 ? '0' + objTime.getMinutes() : objTime.getMinutes();                         //分
+            var second = objTime.getSeconds() < 10 ? '0' + objTime.getSeconds() : objTime.getSeconds();                    //秒
+            now_time2.innerText = hour + ":" + minute + ":" + second;                                                                              //给span赋值显示时间
+            objTime = new Date(year, month, day, objTime.getHours(), objTime.getMinutes(), objTime.getSeconds() + 1);   //当前时间加一秒
+        }
+        window.setInterval(setTime, 1000);
+    }
+</script><div id="yhqhadin" style="display:none;"></div></body></html>

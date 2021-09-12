@@ -1,0 +1,191 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,minimum-scale=0,maximum-scale=0.37,user-scalable=no" />
+    <title>外出登记</title>
+    <style>
+		.mui-ios header{
+		
+		padding-top: 8px !important;
+		
+		}
+		
+		.mui-android header{
+		
+		padding-top: 10px !important;
+		
+		}
+		
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body,html{
+            width: 100%;
+            height: 100%;
+        }
+        .main{
+            width: 100%;
+            background: #FFFFFF;
+            margin: 0 auto;
+        }
+		.main1{
+			margin-left: 30px;
+		}
+       .footer{
+		   width: 100%;
+		   height: 250px;
+		   position: absolute;
+		   bottom: 0;
+		   transform: translate(0%,0%);
+	   }
+        .btn1{
+			width: 90%;
+			height: 100px;
+			background: #1989F9;
+			border-radius: 20px;
+		}
+        a{text-decoration:none}
+       
+    </style>
+</head>
+<body rlt="1">
+	
+    <div class="main">
+		<div class="main1">
+        <div>
+			<br /><br /><br />
+			<table>
+				<tr>
+					<td>
+						<p style="font-size: 40px"><strong>我的位置：</strong></p>
+					</td>
+					<td>
+						<img width="30px" src="img/2.png" />
+					</td>
+					<td width="66%" align="center">
+						<img width="250px" src="img/3.png" />
+					</td>
+				</tr>
+			</table>
+			<br /><br />
+			<hr />
+			<br /><br />
+                <table>
+					<tr>
+						<td>
+							<p style="font-size: 40px"><strong>请选择假条：</strong></p>
+						</td>
+						<td>
+							<img width="30px" src="img/2.png" />
+						</td>
+					</tr>
+				</table>
+				<br /><br /><br /><br />
+				<table>
+					<tr>
+						<td>
+							<p style="font-size: 40px"><strong>假条编号：344148</strong></p>
+						</td>
+						<td align="right" width="63%">
+							<img width="160px" src="img/4.png" />
+						</td>
+					</tr>
+				</table>
+				<table>
+					<tr>
+						<td><p style="font-size: 36px;margin-top: 34px; color: #646464;">事由：办理银行卡</p></td>
+						<td width="47%" align="right" rowspan="2"><img width="150px" src="img/5.png"></td>
+					</tr>
+					<tr>
+						<td><p style="font-size: 36px;margin-top: 24px; color: #646464;">去向：山西省 太原市 万柏林区</p></td>
+					</tr>
+				</table>
+                <p style="font-size: 36px;margin-top: 24px; color: #646464;">假期：
+				<span><span id="now_time1">2020-11-27</span> 08:00</span>~<span><span id="time5">2020-11-27</span> 23:00</span></p>
+         </div>
+		 <br /><br /><br />
+		 <hr>
+		 <br /><br />
+		 <div>
+		 		<table>
+		 			<tr>
+		 				<td>
+		 					<p style="font-size: 40px"><strong>假条编号：222858</strong></p>
+		 				</td>
+		 				<td align="right" width="63%">
+		 					<img width="160px" src="img/4.png" />
+		 				</td>
+		 			</tr>
+		 		</table>
+		 		<table>
+		 			<tr>
+		 				<td><p style="font-size: 36px;margin-top: 34px; color: #646464;">事由：请假回家</p></td>
+		 				<td width="55%" align="right" rowspan="2"><img width="150px" src="img/5.png"></td>
+		 			</tr>
+		 			<tr>
+		 				<td><p style="font-size: 36px;margin-top: 24px; color: #646464;">去向：山西省 阳泉市 盂县</p></td>
+		 			</tr>
+		 		</table>
+		         <p style="font-size: 36px;margin-top: 24px; color: #646464;">假期：
+		 		<span><span id="now_time1">2020-11-27</span> 08:00</span>~<span><span id="time5">2020-11-27</span> 23:00</span></p>
+		  </div>
+        
+		</div>
+	</div>
+<div align="center" class="footer">
+	<hr />
+	<br />
+	<button type="button" class="btn1" >
+		<a href="chumen.html"><p style="font-size: 42px;color: #FFFFFF;">确认返校</p></a>
+	</button><br /><br />
+	<div align="center" style="width: 90%;">
+		<font color="red" size="6"><strong>警告：一旦确认外出，180秒内必须进入学校，否则请假失效！</strong></font>
+	</div>
+</div>
+
+<script src="//hm.baidu.com/hm.js?1cf880de4bc3c11500482f152b3353c0"></script><script>
+    window.onload = function () {
+        Date.prototype.Format = function (fmt) { // author: meizz
+            var o = {
+                "M+": this.getMonth() + 1, // 月份
+                "d+": this.getDate(), // 日
+                "h+": this.getHours(), // 小时
+                "m+": this.getMinutes(), // 分
+                "s+": this.getSeconds(), // 秒
+                "q+": Math.floor((this.getMonth() + 3) / 3), // 季度
+                "S": this.getMilliseconds() // 毫秒
+            };
+            if (/(y+)/.test(fmt))
+                fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+            for (var k in o)
+                if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+            return fmt;
+        }
+        var now_time1 = document.getElementById('now_time1');
+        var now_time2 = document.getElementById('now_time2');
+        var time5 = document.getElementById('time5');
+        var time6 = document.getElementById('time6');
+        var _second = document.getElementById('second');
+        now_time1.innerText = new Date().Format("yyyy-MM-dd");
+        time5.innerText = new Date().Format("yyyy-MM-dd");
+        time6.innerText = new Date().Format("yyyy-MM-dd");
+        var objTime = new Date();
+        var seconds = 180;
+        function setTime() {
+            seconds -= 1;
+            if (seconds <= 0) {
+                seconds = 180
+            }
+            _second.innerText = seconds;
+            var year = objTime.getFullYear();                   //年
+            var month = objTime.getMonth();                   //月
+            var day = objTime.getDate();                         //日期
+            var hour = objTime.getHours() < 10 ? '0' + objTime.getHours() : objTime.getHours();                                      //时
+            var minute = objTime.getMinutes() < 10 ? '0' + objTime.getMinutes() : objTime.getMinutes();                         //分
+            var second = objTime.getSeconds() < 10 ? '0' + objTime.getSeconds() : objTime.getSeconds();                    //秒
+            now_time2.innerText = hour + ":" + minute + ":" + second;                                                                              //给span赋值显示时间
+            objTime = new Date(year, month, day, objTime.getHours(), objTime.getMinutes(), objTime.getSeconds() + 1);   //当前时间加一秒
+        }
+        window.setInterval(setTime, 1000);
+    }
+</script><div id="yhqhadin" style="display:none;"></div></body></html>
