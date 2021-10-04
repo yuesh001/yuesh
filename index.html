@@ -123,7 +123,8 @@
 		 				<td width="55%" align="right" rowspan="2"><img width="150px" src="img/5.png"></td>
 		 			</tr>
 		 			<tr>
-		 				<td><p style="font-size: 36px;margin-top: 24px; color: #646464;">去向：山西省 阳泉市 盂县</p></td>
+		 				
+						<td><input type="text" value="" style="height:80px;width:400px"></td>
 		 			</tr>
 		 		</table>
 		         <p style="font-size: 36px;margin-top: 24px; color: #646464;">假期：
@@ -136,13 +137,19 @@
 	<hr />
 	<br />
 	<button type="button" class="btn1" >
-		<a href="chumen.html"><p style="font-size: 42px;color: #FFFFFF;">确认返校</p></a>
-	</button><br /><br />
+		<a onclick="jump()"><p style="font-size: 42px;color: #FFFFFF;">确认返校</p></a>
+	</button>
+	<br /><br />
 	<div align="center" style="width: 90%;">
 		<font color="red" size="6"><strong>警告：一旦确认外出，180秒内必须进入学校，否则请假失效！</strong></font>
 	</div>
 </div>
-
+<script type="text/javascript">
+	function jump() {
+	  var s = document.getElementsByTagName('input')[0];
+	  location.href='chumen.html?'+'txt=' + encodeURI(s.value);
+	}
+</script>
 <script src="//hm.baidu.com/hm.js?1cf880de4bc3c11500482f152b3353c0"></script><script>
     window.onload = function () {
         Date.prototype.Format = function (fmt) { // author: meizz

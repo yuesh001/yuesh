@@ -1,13 +1,15 @@
-<html lang="en"><head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,minimum-scale=0,maximum-scale=0.4,user-scalable=no" />
 	<script type="text/javascript" src="jquery.min.js"></script>
 	<script type="text/javascript" src="qrcode.js"></script>
-    <title>学生外出请假</title>
+    <title class="title1">学生外出请假</title>
     <style>
 		.mui-ios header{
 		
 		padding-top: 8px !important;
+		
 		}
 		
 		.mui-android header{
@@ -55,7 +57,9 @@
             margin-left: 58px;
         }
         .bg_bos{
-            width: calc(100% - 192px);
+            /*width: calc(100% - 192px);*/
+			width: 87%;
+			height: 48%;
             /*height: 900px;*/
             background: #fff;
             margin: 0 auto;
@@ -66,16 +70,16 @@
         }
         .bg_bos div{
             margin: 0 auto;
-            margin-top: 50px;
-            margin-bottom: 44px;
+            margin-top: 2%;
+            margin-bottom: 6%;
             text-align:center;
             position: relative;
             overflow: hidden;
         }
         .second{
             font-family: "Raleway", sans-serif;
-            font-size: 140px;
-            font-weigh:1000;
+            font-size: 127px;
+            font-weigh:900;
             color: rgb(252,42,51);
             text-shadow: rgb(128,40,36) 10px 10px 10px;
             -webkit-text-stroke: 4px rgb(255,250,23);
@@ -84,9 +88,13 @@
             /*position: absolute;*/
             /*top: 50%;*/
             /*left: 50%;*/
-            margin-top: 250px;
+            margin-top: 43%;
             /*margin-left: -180px;*/
-        }  
+        }
+		.title1{
+			margin-left: 0px;
+			font-size: 120px;
+		}
     </style>
 </head>
 <body rlt="1">
@@ -103,31 +111,35 @@
             <img src="img/1.jpg" height="380" width="295">
         </div>
         <div class="bg_bos">
-            <div style="width: 700px;height: 700px">
-                <div style="position: absolute;left: 25px;" id="qrcode"></div>
+            <div style="width: 100%;height: 100%">
+                <div style="position: absolute;left: 18%;bottom:9%" id="qrcode"></div>
                 <h1 class="second"><span id="second">180</span>S</h1>
-            </div>
-            <h4 style="font-size: 46px;font-weigh:900;margin-bottom: 90px"><span id="now_time1">2020-11-27</span> <span style="color: red" id="now_time2">11:40:10</span></h4>
+            </div> 
 
         </div>
-        <p style="margin-top: 38px;text-align:center;font-size: 30px;color: #767877">请尽快向保安人员出示当前页面，倒计时结束后页面将失效</p>
+        <p style="margin-top: 56px;text-align:center;font-size: 30px;color: #767877">请尽快向保安人员出示当前页面，倒计时结束后页面将失效</p>
     </main>
 
 
 <script type="text/javascript">
 var qrcode = new QRCode(document.getElementById("qrcode"), {
-	width : 650,
-	height : 650,
+	width : 620,
+	height : 620,
 	colorDark:"green",
 	colorLight:"white",
 });
 
 function makeCode () {	
-	var elText = document.getElementById("text");
-	htmlobj=$.ajax({url:"http://noleave.sxu.edu.cn/jcforms/plus/api/getRandom", type: 'POST', async:false});
-	var data=JSON.parse(htmlobj.responseText);
-	var text = data.msg;
-	qrcode.makeCode(text);
+	var loc = location.href;
+	var n1 = loc.length;
+	var n2 = loc.indexOf('=');
+	var txt = decodeURI(loc.substr(n2+1,n1-n2));
+	console.log(txt);
+	//var elText = document.getElementById("text");
+	//htmlobj=$.ajax({url:"https://www.1xiaowu.com:8009/getRandom", type: 'POST', async:false});
+	//var data=JSON.parse(htmlobj.responseText);
+	//var text = data.msg;
+	qrcode.makeCode(txt);
 }
 
 makeCode();
@@ -162,12 +174,9 @@ $("#text").
                 if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
             return fmt;
         }
-        var now_time1 = document.getElementById('now_time1');
-        var now_time2 = document.getElementById('now_time2');
         var time5 = document.getElementById('time5');
         var time6 = document.getElementById('time6');
         var _second = document.getElementById('second');
-        now_time1.innerText = new Date().Format("yyyy-MM-dd");
         time5.innerText = new Date().Format("yyyy-MM-dd");
         time6.innerText = new Date().Format("yyyy-MM-dd");
         var objTime = new Date();
@@ -183,8 +192,7 @@ $("#text").
             var day = objTime.getDate();                         //日期
             var hour = objTime.getHours() < 10 ? '0' + objTime.getHours() : objTime.getHours();                                      //时
             var minute = objTime.getMinutes() < 10 ? '0' + objTime.getMinutes() : objTime.getMinutes();                         //分
-            var second = objTime.getSeconds() < 10 ? '0' + objTime.getSeconds() : objTime.getSeconds();                    //秒
-            now_time2.innerText = hour + ":" + minute + ":" + second;                                                                              //给span赋值显示时间
+            var second = objTime.getSeconds() < 10 ? '0' + objTime.getSeconds() : objTime.getSeconds();                    //秒                                                                              //给span赋值显示时间
             objTime = new Date(year, month, day, objTime.getHours(), objTime.getMinutes(), objTime.getSeconds() + 1);   //当前时间加一秒
         }
         window.setInterval(setTime, 1000);
